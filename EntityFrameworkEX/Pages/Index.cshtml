@@ -1,0 +1,115 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<h1>Sale</h1>
+
+@*<hr />
+<div style="display:inline-block">
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="saleitem.SalesName" class="control-label"></label>
+                    <input asp-for="saleitem.SalesName" class="form-control" />
+                    <span asp-validation-for="saleitem.SalesName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="saleitem.StartDate" class="control-label"></label>
+                    <input asp-for="saleitem.StartDate" class="form-control" />
+                    <span asp-validation-for="saleitem.StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="saleitem.EndDate" class="control-label"></label>
+                    <input asp-for="saleitem.EndDate" class="form-control" />
+                    <span asp-validation-for="saleitem.EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="saleitem.Price" class="control-label"></label>
+                    <input asp-for="saleitem.Price" class="form-control" />
+                    <span asp-validation-for="saleitem.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="saleitem.ProductName" class="control-label"></label>
+                    <input asp-for="saleitem.ProductName" class="form-control" />
+                    <span asp-validation-for="saleitem.ProductName" class="text-danger"></span>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="prod.ProductName" class="control-label"></label>
+                    <input asp-for="prod.ProductName" class="form-control" />
+                    <span asp-validation-for="prod.ProductName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="prod.Price" class="control-label"></label>
+                    <input asp-for="prod.Price" class="form-control" />
+                    <span asp-validation-for="prod.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="prod.Description" class="control-label"></label>
+                    <input asp-for="prod.Description" class="form-control" />
+                    <span asp-validation-for="prod.Description" class="text-danger"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <input type="submit" value="Add" class="btn btn-primary" />
+</div>*@
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <table>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model.SaleItem)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalesName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <h6>Products Under this sale!</h6>
+                @foreach (var prod in item.ProductName)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => prod.Price)
+                    </td>
+                }
+
+            </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
